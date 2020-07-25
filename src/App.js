@@ -1,35 +1,30 @@
-import React from 'react';
-import Cards from './Components/Cards/Cards';
-import Charts from './Components/Charts/Charts';
-import CountryPicker from './Components/CountryPicker/CountryPicker';
-import styles from './App.module.css'
-import { fetchData } from './api';
+import React from "react";
+import Row from "./Components/Row";
+import requests from "./API/request";
+import './App.css'
+import Banner from "./Components/Banner/Banner";
+import Navbar from "./Components/Navbar/Navbar";
 class App extends React.Component {
-
-  state={
-    data:{},
-    country:''
+  render() {
+    return (
+      <div className="app">
+        <Navbar/>
+        <Banner/>  
+        <Row
+          title="NETFLIX ORIGINALS"
+          fetchUrl={requests.fetchNetflixOriginals}
+          isLargeRow
+        />
+        <Row title="Trending Now" fetchUrl={requests.fetchTrending} />
+        <Row title="Top Rated" fetchUrl={requests.fetchTopRated} />
+        <Row title="Action Movies" fetchUrl={requests.fetchActionMovies} />
+        <Row title="Comedy Movies" fetchUrl={requests.fetchComedyMovies} />
+        <Row title="Horror Movies" fetchUrl={requests.fetchHorrorMovies} />
+        <Row title="Romance" fetchUrl={requests.fetchRomanceMovies} /> 
+        <Row title="Documentaries" fetchUrl={requests.fetchDocumentaries} /> 
+      </div>
+    );
   }
-  async componentDidMount(){
-    const fetchedData=await fetchData()
-    this.setState({data:fetchedData} )
-   }
-  handleCountryChange=async(country)=>{
-        const fetchedData=await fetchData(country)
-        this.setState({data:fetchedData, country:country} )
-  }
-render(){
-  const {data,country}=this.state
-  return (
-    <div className={styles.container}>
-       <img  className={styles.image} src="https://i.ibb.co/7QpKsCX/image.png" alt="corona"/>
-      <Cards data={data}/> 
-      <CountryPicker handleCountryChange={this.handleCountryChange}/>
-      <Charts data={data} country={country}/>
-    </div>
-  );
-} 
 }
 
 export default App;
- 
