@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./Nav.css";
+import myImage from '../../../public/580b57fcd9996e24bc43c529.png'
 const Navbar = () => {
   const [show, handleShow] = useState(false);
   useEffect(() => {
@@ -16,7 +17,7 @@ const Navbar = () => {
     <div className={`nav ${show && "nav__black"}`}>
       <img
         className="nav__logo"
-        src="https://lh3.googleusercontent.com/proxy/ztzxIk8kPBP2UkvgAd6dhUguNT5ZJki1mrceD5z1n4cGq65tqA9mITKQKz_EoaHuIWQcliGpY2eXleywxd7BYda4YriISYosKAsaNifES5QXLhSHNOU"
+        src={myImage}
         alt="netflix logo"
       />
     </div>
