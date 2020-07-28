@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./Nav.css";
-import myImage from '../../../public/580b57fcd9996e24bc43c529.png'
+import myImage from './580b57fcd9996e24bc43c529.png'
 const Navbar = () => {
   const [show, handleShow] = useState(false);
   useEffect(() => {
